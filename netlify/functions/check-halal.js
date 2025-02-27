@@ -1,8 +1,14 @@
 exports.handler = async (event, context) => {
-  const formData = await event.body;
+  console.log("Received request:", event.body); // Log the request body
+
+  const formData = new URLSearchParams(event.body);
   const barcode = formData.get('barcode');
   const image = formData.get('image');
   const question = formData.get('question');
+
+  console.log("Barcode:", barcode); // Log the barcode
+  console.log("Image:", image); // Log the image
+  console.log("Question:", question); // Log the question
 
   if (barcode) {
     // Simulate checking a barcode database
